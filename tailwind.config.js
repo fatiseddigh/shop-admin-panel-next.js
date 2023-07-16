@@ -42,6 +42,9 @@ module.exports = {
         warning: withOpacity("--color-warning"),
         error: withOpacity("--color-error"),
       },
+      container: {
+        center: true,
+      },
       fontFamily: {
         sans: ["var(--font-rubik)"],
       },
