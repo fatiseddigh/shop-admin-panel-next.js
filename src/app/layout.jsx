@@ -1,5 +1,6 @@
 import rubikFont from "@/constants/localFonts";
 import "./globals.css";
+import Header from "./Header";
 
 export const metadata = {
   title: "Create Next App",
@@ -9,7 +10,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${rubikFont.variable} font-sans`}>{children}</body>
+      <body className={`${rubikFont.variable} font-sans`}>
+        <Header />
+        <div className="container xl:max-w-screen-xl">{children}</div>
+      </body>
     </html>
   );
 }
