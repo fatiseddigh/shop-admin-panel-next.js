@@ -1,8 +1,8 @@
 import TextField from "@/common/TextField";
 
-const SendOTOForm = ({ phoneNumber, onChange }) => {
+const SendOTOForm = ({ phoneNumber, onChange, onSubmit }) => {
   return (
-    <form>
+    <form onSubmit={onSubmit}>
       <TextField
         label="phone number"
         name="phone-number"
