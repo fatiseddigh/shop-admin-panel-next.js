@@ -50,7 +50,7 @@ const AuthPAge = () => {
     try {
       const { user, message } = await mutateCheckOTP({ phoneNumber, otp });
       toast.success(message);
-      if (user.iaActive) {
+      if (user.isActive) {
         router.push("/");
       } else {
         router.push("/complete-profile");
