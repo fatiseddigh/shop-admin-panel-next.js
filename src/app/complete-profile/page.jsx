@@ -8,18 +8,19 @@ import { toast } from "react-hot-toast";
 
 const CompleteProfile = () => {
   const router = useRouter();
-  const [nameInput, setNameInput] = useState("");
-  const [emailInput, setEmailInput] = useState("");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
   const { data, isLoading, error, mutateAsync } = useMutation({
     mutationFn: completeProfile,
   });
   const submitForm = async (e) => {
     e.preventDefault();
     try {
-      const { message } = await mutateAsync({ nameInput, emailInput });
+      const { message } = await mutateAsync({ name, email });
       toast.success(message);
       router.push("/");
     } catch (error) {
+      console.log(error);
       toast.error(error?.response?.data?.message);
     }
   };
@@ -30,14 +31,14 @@ const CompleteProfile = () => {
           <TextField
             label="name"
             name="name"
-            value={nameInput}
-            onChange={(e) => setNameInput(e.target.value)}
+            value={name}
+            onChange={(e) => setName(e.target.value)}
           />
           <TextField
             label="email"
             name="email"
-            value={emailInput}
-            onChange={(e) => setEmailInput(e.target.value)}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
           <button
             disabled={isLoading}
