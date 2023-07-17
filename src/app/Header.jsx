@@ -28,6 +28,22 @@ const Header = () => {
           </li>
           <li>
             <Link
+              href="/profile"
+              className="block py-2 font-bold text-purple-600"
+            >
+              user panel
+            </Link>
+          </li>
+          <li>
+            <Link
+              href="/admin"
+              className="block py-2 font-bold text-purple-600"
+            >
+              admin panel
+            </Link>
+          </li>
+          <li>
+            <Link
               href="/products"
               className="block py-2 font-bold text-purple-600"
             >
