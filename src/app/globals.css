@@ -39,6 +39,12 @@
          focus:shadow-input-focus focus:bg-white
           px-2 py-3 rounded-xl;
   }
+  .btn {
+    @apply py-1 px-2 rounded-2xl transition-all duration-300;
+  }
+  .btn--primary {
+    @apply px-4 py-3 bg-primary-900 text-white hover:bg-primary-800 shadow-lg shadow-primary-300;
+  }
 }
 html,
 body {

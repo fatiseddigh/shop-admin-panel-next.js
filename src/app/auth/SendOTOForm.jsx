@@ -9,7 +9,9 @@ const SendOTOForm = ({ phoneNumber, onChange }) => {
         value={phoneNumber}
         onChange={onChange}
       />
-      <button type="submit">send</button>
+      <button type="submit" className="btn btn--primary w-full">
+        send code
+      </button>
     </form>
   );
 };
