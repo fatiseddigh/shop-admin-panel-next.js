@@ -1,6 +1,6 @@
 import TextField from "@/common/TextField";
 
-const SendOTOForm = ({ phoneNumber, onChange, onSubmit }) => {
+const SendOTOForm = ({ phoneNumber, onChange, onSubmit, isLoading }) => {
   return (
     <form onSubmit={onSubmit}>
       <TextField
@@ -9,8 +9,12 @@ const SendOTOForm = ({ phoneNumber, onChange, onSubmit }) => {
         value={phoneNumber}
         onChange={onChange}
       />
-      <button type="submit" className="btn btn--primary w-full">
-        send code
+      <button
+        disabled={isLoading}
+        type="submit"
+        className="btn btn--primary w-full"
+      >
+        {isLoading ? "LOADING ..." : "send code"}
       </button>
     </form>
   );
