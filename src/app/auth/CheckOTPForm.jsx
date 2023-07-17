@@ -1,5 +1,5 @@
 import OtpInput from "react-otp-input";
-import { IoIosReturnLeft } from "react-icons/io";
+import { IoIosArrowRoundBack } from "react-icons/io";
 const CheckOTOForm = ({
   onSubmit,
   otp,
@@ -8,23 +8,34 @@ const CheckOTOForm = ({
   time,
   onResendOTP,
   OTPResponse,
+  isCheckingOTP,
 }) => {
   console.log(time);
   return (
     <>
       <button className="text-sm text-gray-400 mb-2 font-bold" onClick={onBack}>
-        <IoIosReturnLeft className="w-7 h-7 " />
+        <IoIosArrowRoundBack className="w-7 h-7 " />
       </button>
-      {/* {OTPResponse && ( */}
-      <button
-        onClick={onBack}
-        className="btn text-primary-700 hover:font-bold block  hover:text-primary-900 mb-4 transition-all duration-200 ease-in-out"
-      >
-        edit your number ?
-      </button>
-      {/* )} */}
+      {OTPResponse && (
+        <button
+          onClick={onBack}
+          className=" text-primary-700 hover:font-bold block  hover:text-primary-900 mb-1 transition-all duration-200 ease-in-out"
+        >
+          edit your number ?
+        </button>
+      )}
+      {time > 0 ? (
+        <p className="text-slate-400 mb-4">{time} second until resend code</p>
+      ) : (
+        <button
+          onClick={onResendOTP}
+          className="btn    text-primary-700 hover:font-bold block  hover:text-primary-900 mb-4 transition-all duration-200 ease-in-out"
+        >
+          resend code
+        </button>
+      )}
       <form onSubmit={onSubmit} className="space-y-8">
-        <p className="text-center">enter confirm code</p>
+        <p>enter confirm code</p>
         <OtpInput
           value={otp}
           onChange={setOtp}
@@ -39,18 +50,13 @@ const CheckOTOForm = ({
           }}
           containerStyle="flex gap-x-2 justify-center"
         />
-        {time > 0 ? (
-          <p>{time} second until resend code</p>
-        ) : (
-          <button
-            onClick={onResendOTP}
-            className="btn border border-primary-700  w-full hover:bg-primary-700 py-2"
-          >
-            resend code
-          </button>
-        )}
-        <button type="submit" className="btn btn--primary w-full">
-          send
+
+        <button
+          disabled={isCheckingOTP}
+          type="submit"
+          className="btn btn--primary w-full"
+        >
+          {isCheckingOTP ? "LOADING ..." : "send"}
         </button>
       </form>
     </>
