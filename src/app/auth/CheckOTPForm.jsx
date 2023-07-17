@@ -1,5 +1,5 @@
 import OtpInput from "react-otp-input";
-
+import { IoIosReturnLeft } from "react-icons/io";
 const CheckOTOForm = ({
   onSubmit,
   otp,
@@ -12,8 +12,8 @@ const CheckOTOForm = ({
   console.log(time);
   return (
     <>
-      <button className="text-sm text-gray-400 mb-2" onClick={onBack}>
-        back
+      <button className="text-sm text-gray-400 mb-2 font-bold" onClick={onBack}>
+        <IoIosReturnLeft className="w-7 h-7 " />
       </button>
       {/* {OTPResponse && ( */}
       <button
