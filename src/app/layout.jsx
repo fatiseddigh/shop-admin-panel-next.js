@@ -14,10 +14,10 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={`${rubikFont.variable} font-sans`}>
         <Toaster />
-        <Header />
-        <div className="container xl:max-w-screen-xl">
-          <Providers>{children}</Providers>
-        </div>
+        <Providers>
+          <Header />
+          <div className="container xl:max-w-screen-xl">{children}</div>
+        </Providers>
       </body>
     </html>
   );
