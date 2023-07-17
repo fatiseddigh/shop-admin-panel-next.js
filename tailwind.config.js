@@ -48,6 +48,9 @@ module.exports = {
       fontFamily: {
         sans: ["var(--font-rubik)"],
       },
+      boxShadow: {
+        "input-focus": "0 12px 24px -8px rgb(var(--color-primary-300))",
+      },
     },
   },
   plugins: [],

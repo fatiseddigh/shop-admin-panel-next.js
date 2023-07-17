@@ -5,7 +5,8 @@ const TextField = ({ name, label, value, onChange }) => {
         {label}
       </label>
       <input
-        className="bg-gray-50 border border-purple-600  py-2 rounded-sm"
+        autoComplete="off"
+        className="textField__input"
         type="text"
         name={name}
         id={name}

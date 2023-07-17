@@ -32,7 +32,14 @@
     --color-red-300: 252, 165, 165;
   }
 }
-
+@layer components {
+  .textField__input {
+    @apply my-3 w-full bg-gray-100 text-secondary-900 border border-gray-100 outline-none
+         duration-200 transition-all ease-in-out hover:border-primary-300 focus:outline-none focus:border-primary-300
+         focus:shadow-input-focus focus:bg-white
+          px-2 py-3 rounded-xl;
+  }
+}
 html,
 body {
   padding: 0;
