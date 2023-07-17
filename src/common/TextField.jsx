@@ -5,7 +5,7 @@ const TextField = ({ name, label, value, onChange }) => {
         {label}
       </label>
       <input
-        autoComplete="off"
+        // autoComplete="off"
         className="textField__input"
         type="text"
         name={name}
