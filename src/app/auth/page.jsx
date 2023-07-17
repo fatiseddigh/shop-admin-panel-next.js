@@ -2,19 +2,20 @@
 import { useState } from "react";
 import SendOTOForm from "./SendOTOForm";
 import http from "@/services/httpServices";
+import { toast } from "react-hot-toast";
 
 const AuthPAge = () => {
   const [phoneNumber, setPhoneNumber] = useState("");
   const phoneNumberHandler = (e) => {
     setPhoneNumber(e.target.value);
   };
-  const sendOTPHandler = (e) => {
+  const sendOTPHandler = async (e) => {
     e.preventDefault();
     try {
-      const { data } = http.post("/user/get-otp", { phoneNumber });
-      console.log(data);
+      const { data } = await http.post("/user/get-otp", { phoneNumber });
+      toast.success(data.data);
     } catch (error) {
-      console.log(error, "hhh");
+      toast.error(error?.response?.data?.message);
     }
   };
   return (
