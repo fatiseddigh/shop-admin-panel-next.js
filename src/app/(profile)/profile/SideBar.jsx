@@ -14,8 +14,7 @@ const SideBar = () => {
           </Link>
         </li>
         <li className="pt-4 hover:font-bold">
-          <Link href="/me">
-            {" "}
+          <Link href="/profile/me">
             <div className="flex items-center">
               <HiUser className="h-5 w-5 mr-1" />
               <p className="text-md pt-1">user info</p>
