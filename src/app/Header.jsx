@@ -43,10 +43,7 @@ const Header = () => {
             </Link>
           </li>
           <li>
-            <Link
-              href="/products"
-              className="block py-2 font-bold text-purple-600"
-            >
+            <Link href="/cart" className="block py-2 font-bold text-purple-600">
               basket({cart ? cart.payDetail.productIds.length : 0})
             </Link>
           </li>
