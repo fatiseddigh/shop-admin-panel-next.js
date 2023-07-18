@@ -1,5 +1,6 @@
 "use client";
 
+import Loading from "@/common/Loading";
 import TextField from "@/common/TextField";
 import { useGetUser } from "@/hooks/useAuth";
 import { includeObj } from "@/utils/objectUtils";
@@ -15,7 +16,7 @@ const Profile = () => {
     if (user) setFormData(includeObj(user, includesKey));
   }, [user]);
 
-  if (isLoading) return <p>loading</p>;
+  if (isLoading) return <Loading />;
   return (
     <div className="max-w-sm">
       <h1>User Info</h1>
