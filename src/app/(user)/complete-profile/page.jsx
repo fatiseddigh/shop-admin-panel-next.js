@@ -1,11 +1,9 @@
 "use client";
 import FormikTextField from "@/common/FormikTextField";
-import TextField from "@/common/TextField";
 import { completeProfile } from "@/services/authServices";
 import { useMutation } from "@tanstack/react-query";
 import { useFormik } from "formik";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
 import { toast } from "react-hot-toast";
 import * as Yup from "yup";
 
@@ -21,13 +19,13 @@ const validationSchema = Yup.object({
     .min(5, " Name must be 5 character"),
   email: Yup.string().required("Enter your email").email("Email not valid"),
 });
+
 const CompleteProfile = () => {
   const router = useRouter();
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
   const { data, isLoading, error, mutateAsync } = useMutation({
     mutationFn: completeProfile,
   });
+
   const submitForm = async (values) => {
     // e.preventDefault();
     try {
@@ -39,12 +37,14 @@ const CompleteProfile = () => {
       toast.error(error?.response?.data?.message);
     }
   };
+
   const formik = useFormik({
     initialValues,
     onSubmit: submitForm,
     validationSchema,
     validateOnMount: true,
   });
+
   return (
     <main className="flex justify-center ">
       <div className="w-full sm:max-w-sm">
