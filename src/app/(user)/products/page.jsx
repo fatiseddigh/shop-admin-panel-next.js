@@ -1,5 +1,6 @@
 import { getCategories } from "@/services/categoryServices";
 import { getProducts } from "@/services/productServices";
+import CategorySidebar from "./CategorySidebar";
 
 const Products = async () => {
   const { products } = await getProducts();
@@ -9,7 +10,7 @@ const Products = async () => {
     <>
       <h1 className="text-center font-bold py-4">shopping page</h1>
       <div className="grid grid-cols-4">
-        <div className="col-span-1 bg-blue-900">side bar</div>
+        <CategorySidebar categories={categories} />
         <div className="col-span-3 bg-red-700">products</div>
       </div>
     </>
