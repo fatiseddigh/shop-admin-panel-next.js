@@ -1,5 +1,6 @@
 import { getProductBySlug, getProducts } from "@/services/productServices";
 import { numberWithCommas } from "@/utils/customNumber";
+import AddToCart from "./AddToCart";
 export const dynamic = "force-static";
 export const dynamicParams = false;
 
@@ -26,9 +27,7 @@ const Page = async ({ params }) => {
           </div>
         </div>
       )}
-      <div>
-        <button className="btn btn--primary">add to cart</button>
-      </div>
+      <AddToCart product={product} />
     </div>
   );
 };
