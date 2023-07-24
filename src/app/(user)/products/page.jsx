@@ -1,9 +1,10 @@
 import { getCategories } from "@/services/categoryServices";
 import { getProducts } from "@/services/productServices";
 import CategorySidebar from "./CategorySidebar";
+import queryString from "query-string";
 
-const Products = async () => {
-  const { products } = await getProducts();
+const Products = async ({ searchParams }) => {
+  const { products } = await getProducts(queryString.stringify(searchParams));
   const { categories } = await getCategories();
 
   return (
