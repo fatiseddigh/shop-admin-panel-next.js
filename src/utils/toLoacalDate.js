@@ -8,3 +8,6 @@ export function toLocalDateString(date) {
 
   return new Date(date).toLocaleDateString("en", options);
 }
+export function toLocalDateStringShort(date) {
+  return new Date(date).toLocaleDateString("en");
+}

@@ -2,6 +2,8 @@ import { getCategories } from "@/services/categoryServices";
 import { getProducts } from "@/services/productServices";
 import CategorySidebar from "./CategorySidebar";
 import queryString from "query-string";
+import Link from "next/link";
+import { toLocalDateStringShort } from "@/utils/toLoacalDate";
 
 export const dynamic = "force-dynamic";
 
@@ -28,7 +30,19 @@ const Products = async ({ searchParams }) => {
                 key={product._id}
                 className="col-span-1 border rounded-xl shadow-md p-4"
               >
-                <h2 className="font-bold">{product.title}</h2>
+                <h2 className="font-bold text-xl mb-4">{product.title}</h2>
+                <div className="mb-4">
+                  <span> Created At : </span>
+                  <span className="font-bold">
+                    {toLocalDateStringShort(product.createdAt)}
+                  </span>
+                </div>
+                <Link
+                  className="text-primary-900 font-bold mb-4 block"
+                  href={`/products/${product.slug}`}
+                >
+                  show product
+                </Link>
               </div>
             );
           })}
