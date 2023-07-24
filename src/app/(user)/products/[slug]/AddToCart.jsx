@@ -3,6 +3,7 @@
 import { useGetUser } from "@/hooks/useAuth";
 import { useCart } from "@/hooks/useCart";
 import { useQueryClient } from "@tanstack/react-query";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { toast } from "react-hot-toast";
 
@@ -13,6 +14,7 @@ const AddToCart = ({ product }) => {
   const { user } = data || {};
 
   const { isLoading, mutateAsync } = useCart();
+
   const addToCartHandler = async () => {
     if (!user) {
       toast.error("you should login first.");
@@ -29,11 +31,21 @@ const AddToCart = ({ product }) => {
       }
     }
   };
+
+  const isInCart = (user, product) => {
+    if (!user) return false;
+
+    return user.cart?.products.some((p) => p.productId === product._id);
+  };
   return (
     <div>
-      <button onClick={addToCartHandler} className="btn btn--primary">
-        {isLoading ? "LOADING ..." : "add to cart"}
-      </button>
+      {isInCart(user, product) ? (
+        <Link href="/cart">continue</Link>
+      ) : (
+        <button onClick={addToCartHandler} className="btn btn--primary">
+          {isLoading ? "LOADING ..." : "add to cart"}
+        </button>
+      )}
     </div>
   );
 };
