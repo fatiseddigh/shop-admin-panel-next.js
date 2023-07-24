@@ -1,8 +1,40 @@
 "use client";
+import { useCart, useDecrementFromCart } from "@/hooks/useCart";
 import { numberWithCommas } from "@/utils/customNumber";
+import { useQueryClient } from "@tanstack/react-query";
+import { toast } from "react-hot-toast";
 import { HiOutlineTrash, HiPlus, HiMinus } from "react-icons/hi";
 
 function CartItem({ cartItem }) {
+  const { isLoading, mutateAsync: addToCartAsync } = useCart();
+  const { mutateAsync: decrementFromCartAsync } = useDecrementFromCart();
+
+  const queryClient = useQueryClient();
+
+  const addToCartHandler = async () => {
+    try {
+      const { message } = await addToCartAsync(cartItem._id);
+      toast.success(message);
+      queryClient.invalidateQueries({ queryKey: ["get-user"] });
+    } catch (error) {
+      if (error?.response?.data) {
+        toast.error(error.response.data.message);
+      }
+    }
+  };
+
+  const decrementHandler = async () => {
+    try {
+      const { message } = await decrementFromCartAsync(cartItem._id);
+      toast.success(message);
+      queryClient.invalidateQueries({ queryKey: ["get-user"] });
+    } catch (error) {
+      if (error?.response?.data) {
+        toast.error(error.response.data.message);
+      }
+    }
+  };
+
   return (
     <div className="border rounded-xl p-4 flex justify-between">
       <span className="flex-1 font-bold">{cartItem.title}</span>
@@ -20,10 +52,7 @@ function CartItem({ cartItem }) {
           </div>
           {!!cartItem.discount && (
             <div className="flex items-center gap-x-2 mt-2">
-              <p className="font-bold">
-                {" "}
-                {numberWithCommas(cartItem.offPrice)}
-              </p>
+              <p className="font-bold">{numberWithCommas(cartItem.offPrice)}</p>
               <div className="bg-rose-500 px-2 py-0.5 rounded-xl text-white text-sm">
                 {cartItem.discount} %
               </div>
@@ -33,10 +62,13 @@ function CartItem({ cartItem }) {
 
         <span className="border-r-2 pr-2">quantity : {cartItem.quantity}</span>
         <div className="flex gap-x-3">
-          <button className="bg-primary-900 text-white rounded p-1">
+          <button
+            onClick={addToCartHandler}
+            className="bg-primary-900 text-white rounded p-1"
+          >
             <HiPlus className="w-4 h-4" />
           </button>
-          <button className="border rounded p-1">
+          <button className="border rounded p-1" onClick={decrementHandler}>
             {cartItem.quantity > 1 ? (
               <HiMinus className="w-4 h-4" />
             ) : (
