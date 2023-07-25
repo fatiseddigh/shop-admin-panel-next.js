@@ -59,3 +59,38 @@ export const userListHeads = [
     label: "view",
   },
 ];
+
+export const productListHeads = [
+  {
+    id: 1,
+    label: "#",
+  },
+  {
+    id: 2,
+    label: "title",
+  },
+  {
+    id: 3,
+    label: "category",
+  },
+  {
+    id: 4,
+    label: " price",
+  },
+  {
+    id: 5,
+    label: "discount",
+  },
+  {
+    id: 6,
+    label: "off price",
+  },
+  {
+    id: 7,
+    label: "count in stock",
+  },
+  {
+    id: 8,
+    label: "view",
+  },
+];

@@ -49,7 +49,7 @@
     @apply border-b-2 border-b-gray-500 font-medium p-3 pr-8 pb-3 text-left;
   }
   .table__td {
-    @apply border-b  border-b-gray-300 p-3 pr-8 pb-3 text-right;
+    @apply border-b  border-b-gray-300 p-3 pr-8 pb-3 text-left;
   }
   .badge {
     @apply whitespace-nowrap px-3 py-1 rounded-xl;

@@ -23,10 +23,8 @@ function UsersTable({ users }) {
             return (
               <tr key={user._id}>
                 <td className="table__td">{index}</td>
-                <td className="table__td  whitespace-nowrap text-left">
-                  {user.name}
-                </td>
-                <td className="table__td text-left">{user.email}</td>
+                <td className="table__td  whitespace-nowrap ">{user.name}</td>
+                <td className="table__td ">{user.email}</td>
                 <td className="table__td">
                   <div className="flex whitespace-nowrap gap-x-2 items-center">
                     {user.phoneNumber}{" "}
@@ -46,10 +44,10 @@ function UsersTable({ users }) {
                     })}
                   </div>
                 </td>
-                <td className="table__td text-left">
+                <td className="table__td ">
                   {toLocalDateStringShort(user.createdAt)}
                 </td>
-                <td className="table__td font-bold  text-left hover:text-primary-800">
+                <td className="table__td font-bold   hover:text-primary-800">
                   <Link href={`/admin/users/${user._id}`}>view details </Link>
                 </td>
               </tr>
