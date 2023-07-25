@@ -28,3 +28,34 @@ export const userPaymentHeads = [
     label: "status",
   },
 ];
+
+export const userListHeads = [
+  {
+    id: 1,
+    label: "#",
+  },
+  {
+    id: 2,
+    label: "name",
+  },
+  {
+    id: 3,
+    label: "email",
+  },
+  {
+    id: 4,
+    label: "phone number",
+  },
+  {
+    id: 5,
+    label: "products",
+  },
+  {
+    id: 6,
+    label: "createdAt",
+  },
+  {
+    id: 7,
+    label: "view",
+  },
+];
