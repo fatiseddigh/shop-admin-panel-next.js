@@ -3,6 +3,7 @@ import { logout } from "@/services/authServices";
 import Link from "next/link";
 import { HiHome, HiUser } from "react-icons/hi";
 import { BiLogOut } from "react-icons/bi";
+import { MdPayments } from "react-icons/md";
 
 const SideBar = () => {
   const logoutHandler = async () => {
@@ -28,6 +29,14 @@ const SideBar = () => {
             <div className="flex items-center">
               <HiUser className="h-5 w-5 mr-1" />
               <p className="text-md pt-1">user info</p>
+            </div>
+          </Link>
+        </li>
+        <li className="pt-4 hover:font-bold">
+          <Link href="/profile/payment">
+            <div className="flex items-center">
+              <MdPayments className="h-5 w-5 mr-1" />
+              <p className="text-md pt-1">user payment</p>
             </div>
           </Link>
         </li>

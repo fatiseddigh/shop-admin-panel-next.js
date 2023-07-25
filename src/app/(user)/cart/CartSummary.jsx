@@ -1,3 +1,4 @@
+"use client";
 import Loading from "@/common/Loading";
 import { createPayment } from "@/services/paymentService";
 import { numberWithCommas } from "@/utils/customNumber";
