@@ -3,7 +3,7 @@ import { RiEdit2Line } from "react-icons/ri";
 import { HiEye, HiTrash } from "react-icons/hi";
 import { productListHeads } from "@/constants/tabelHeads";
 
-function ProductListTable({ products }) {
+function ProductsTable({ products }) {
   return (
     <div className="shadow-sm overflow-auto my-8">
       <table className="border-collapse table-auto w-full min-w-[800px] text-sm">
@@ -52,4 +52,4 @@ function ProductListTable({ products }) {
     </div>
   );
 }
-export default ProductListTable;
+export default ProductsTable;
