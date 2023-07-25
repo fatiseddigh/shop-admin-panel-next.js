@@ -2,7 +2,7 @@
 import { logout } from "@/services/authServices";
 import Link from "next/link";
 import { HiHome, HiUser } from "react-icons/hi";
-import { BiLogOut } from "react-icons/bi";
+import { BiLogOut, BiSolidDashboard } from "react-icons/bi";
 import { MdPayments } from "react-icons/md";
 
 const SideBar = () => {
@@ -21,6 +21,15 @@ const SideBar = () => {
             <div className="flex items-center">
               <HiHome className="h-5 w-5 mr-1" />
               <p className="text-md pt-1">home page</p>
+            </div>
+          </Link>
+        </li>
+
+        <li className="pt-4 hover:font-bold">
+          <Link href="/profile">
+            <div className="flex items-center">
+              <BiSolidDashboard className="h-5 w-5 mr-1" />
+              <p className="text-md pt-1">dashboard</p>
             </div>
           </Link>
         </li>
