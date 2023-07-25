@@ -1,4 +1,5 @@
 "use client";
+
 import Loading from "@/common/Loading";
 import { useGetUser } from "@/hooks/useAuth";
 import PaymentTable from "./PaymentTable";

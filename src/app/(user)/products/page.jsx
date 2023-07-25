@@ -5,14 +5,21 @@ import queryString from "query-string";
 import Link from "next/link";
 import { toLocalDateStringShort } from "@/utils/toLoacalDate";
 import AddToCart from "./[slug]/AddToCart";
+import LikeProduct from "./LikeProduct";
+import { cookies } from "next/headers";
+import { toStringCookies } from "@/utils/toStringCookies";
 
 export const dynamic = "force-dynamic";
 
 const Products = async ({ searchParams }) => {
   // const { products } = await getProducts(queryString.stringify(searchParams));
   // const { categories } = await getCategories();
-
-  const productsPromise = getProducts(queryString.stringify(searchParams));
+  const cookieStore = cookies();
+  const strCookies = toStringCookies(cookieStore);
+  const productsPromise = getProducts(
+    queryString.stringify(searchParams),
+    strCookies
+  );
   const categoriesPromise = getCategories();
   const [{ products }, { categories }] = await Promise.all([
     productsPromise,
@@ -44,6 +51,7 @@ const Products = async ({ searchParams }) => {
                 >
                   show product
                 </Link>
+                <LikeProduct product={product} />
                 <AddToCart product={product} />
               </div>
             );
