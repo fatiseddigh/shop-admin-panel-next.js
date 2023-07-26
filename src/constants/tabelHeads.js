@@ -94,3 +94,27 @@ export const productListHeads = [
     label: "view",
   },
 ];
+
+export const categoryListTableTHeads = [
+  {
+    id: 1,
+    label: "#",
+  },
+  {
+    id: 2,
+    label: "title",
+  },
+  {
+    id: 3,
+    label: "description",
+  },
+
+  {
+    id: 5,
+    label: "type",
+  },
+  {
+    id: 6,
+    label: "view",
+  },
+];
