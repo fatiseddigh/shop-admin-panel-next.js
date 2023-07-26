@@ -32,8 +32,8 @@ export function addProduct(data) {
   return http.post(`/admin/product/add`, data).then(({ data }) => data.data);
 }
 
-export function updateProduct(id, data) {
+export function updateProduct({ productId, data }) {
   return http
-    .path(`/admin/product/update/${id}`, data)
+    .patch(`/admin/product/update/${productId}`, data)
     .then(({ data }) => data.data);
 }
