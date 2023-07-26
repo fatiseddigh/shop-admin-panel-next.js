@@ -31,3 +31,9 @@ export function likeProduct(id) {
 export function addProduct(data) {
   return http.post(`/admin/product/add`, data).then(({ data }) => data.data);
 }
+
+export function updateProduct(id, data) {
+  return http
+    .path(`/admin/product/update/${id}`, data)
+    .then(({ data }) => data.data);
+}
