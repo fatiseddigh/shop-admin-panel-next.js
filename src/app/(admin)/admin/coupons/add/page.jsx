@@ -2,11 +2,16 @@
 
 import RadioInput from "@/common/RadioInput";
 import TextField from "@/common/TextField";
+import { useAddCoupon } from "@/hooks/useCoupons";
 import { useGetProducts } from "@/hooks/useProducts";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { toast } from "react-hot-toast";
+import DatePicker from "react-multi-date-picker";
 import Select from "react-select";
 
 function Page() {
+  const router = useRouter();
   const [formData, setFormData] = useState({
     code: "",
     amount: "",
@@ -16,9 +21,25 @@ function Page() {
   const { products } = data || {};
   const [type, setType] = useState("percent");
   const [productsId, setProductsId] = useState([]);
-
+  const [expireDate, setExpireDate] = useState(new Date());
+  const { isLoading, mutateAsync } = useAddCoupon();
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const { message } = await mutateAsync({
+        ...formData,
+        type,
+        expireDate: new Date(expireDate).toISOString(),
+        productIds: productsId.map((p) => p._id),
+      });
+      toast.success(message);
+      router.push("/admin/coupons");
+    } catch (error) {
+      toast.error(error?.response?.data?.message);
+    }
   };
   return (
     <>
@@ -26,7 +47,7 @@ function Page() {
         add new discount coupon
       </h1>
       <div className="max-w-sm">
-        <form className="space-y-4">
+        <form className="space-y-4" onSubmit={handleSubmit}>
           <TextField
             label="code"
             name="code"
@@ -79,6 +100,16 @@ function Page() {
               getOptionValue={(option) => option._id}
             />
           </div>
+          <div>
+            <span className="mb-4 block">expire date</span>
+            <DatePicker
+              inputClass="textField__input w-full"
+              value={expireDate}
+              onChange={(date) => setExpireDate(date)}
+              format="MM/DD/YYYY"
+            />
+          </div>
+          <button className="btn btn--primary w-full">confirm</button>
         </form>
       </div>
     </>
