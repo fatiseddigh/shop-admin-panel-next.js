@@ -153,3 +153,42 @@ export const adminPaymentListTableTHeads = [
     label: "status",
   },
 ];
+
+export const couponListTableTHeads = [
+  {
+    id: 1,
+    label: "#",
+  },
+  {
+    id: 2,
+    label: "code",
+  },
+  {
+    id: 3,
+    label: "type",
+  },
+  {
+    id: 4,
+    label: "amount",
+  },
+  {
+    id: 6,
+    label: "product contains ",
+  },
+  {
+    id: 7,
+    label: "usage ",
+  },
+  {
+    id: 8,
+    label: "capacity",
+  },
+  {
+    id: 9,
+    label: "Expiration date",
+  },
+  {
+    id: 10,
+    label: "operation",
+  },
+];
