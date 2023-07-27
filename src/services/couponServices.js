@@ -8,3 +8,6 @@ export function deleteCoupon(id) {
     .delete(`/admin/coupon/remove/${id}`)
     .then(({ data }) => data.data);
 }
+export function addNewCoupon(data) {
+  return http.post("/admin/coupon/add", data).then(({ data }) => data.data);
+}
