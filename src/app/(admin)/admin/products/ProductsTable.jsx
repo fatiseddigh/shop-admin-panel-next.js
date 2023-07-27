@@ -2,8 +2,19 @@ import Link from "next/link";
 import { RiEdit2Line } from "react-icons/ri";
 import { HiEye, HiTrash } from "react-icons/hi";
 import { productListHeads } from "@/constants/tabelHeads";
+import { useRemoveProduct } from "@/hooks/useProducts";
+import { toast } from "react-hot-toast";
 
 function ProductsTable({ products }) {
+  const { mutateAsync } = useRemoveProduct();
+  const removeProductHandler = async (id) => {
+    try {
+      const { message } = await mutateAsync(id);
+      toast.success(message);
+    } catch (error) {
+      toast.error(error?.response?.data?.message);
+    }
+  };
   return (
     <div className="shadow-sm overflow-auto my-8">
       <table className="border-collapse table-auto w-full min-w-[800px] text-sm">
