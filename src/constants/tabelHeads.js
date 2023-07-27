@@ -118,3 +118,38 @@ export const categoryListTableTHeads = [
     label: "view",
   },
 ];
+
+export const adminPaymentListTableTHeads = [
+  {
+    id: 1,
+    label: "#",
+  },
+  {
+    id: 2,
+    label: "no",
+  },
+  {
+    id: 3,
+    label: "description",
+  },
+  {
+    id: 4,
+    label: "user",
+  },
+  {
+    id: 5,
+    label: "محصولات",
+  },
+  {
+    id: 6,
+    label: "price",
+  },
+  {
+    id: 7,
+    label: "date",
+  },
+  {
+    id: 8,
+    label: "status",
+  },
+];
