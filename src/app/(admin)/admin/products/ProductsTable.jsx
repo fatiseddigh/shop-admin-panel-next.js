@@ -4,13 +4,17 @@ import { HiEye, HiTrash } from "react-icons/hi";
 import { productListHeads } from "@/constants/tabelHeads";
 import { useRemoveProduct } from "@/hooks/useProducts";
 import { toast } from "react-hot-toast";
+import { useQueryClient } from "@tanstack/react-query";
 
 function ProductsTable({ products }) {
   const { mutateAsync } = useRemoveProduct();
+  const queryClient = useQueryClient();
+
   const removeProductHandler = async (id) => {
     try {
       const { message } = await mutateAsync(id);
       toast.success(message);
+      queryClient.invalidateQueries({ queryKey: ["get-products"] });
     } catch (error) {
       toast.error(error?.response?.data?.message);
     }
